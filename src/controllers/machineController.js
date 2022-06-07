@@ -4,20 +4,27 @@ const dbConnection = require('../config/dbConnect')
 /* TODO:
     - Add a new machine :DONE
     - Get all machines :DONE
-    - Get a machine by id :NEXT
-    - Update a machine
-    - Delete a machine
+    - Get a machine by id :DONE
+    - Update a machine :DONE    
+    - Delete a machine :DONE
+    - Search using query :DONE
+    - Pagination :NEXT
 
 
 */
 
 
 class MachineController {
+
     
+
     // get all itens from machine table
     static getMachines(req, res) {
         dbConnection.query('SELECT * FROM machine', (err, rows) => {
             if (err) {
+                res.status(500).json({
+                    message: 'Error getting machines'
+                })
                 console.log(err)
             } else {
                 res.json(rows)
@@ -27,14 +34,19 @@ class MachineController {
 
     // get a machine by id
     static getMachineById(req, res) {
-        dbConnection.query('SELECT * FROM machine WHERE id = ?', [req.params.id], (err, rows) => {
-            if (err) {
-                console.log(err)
-            } else {
-                res.json(rows)
-                
-            }
-        })
+        const id = req.params.id
+        dbConnection.query('SELECT * FROM machine WHERE id = ?', id,
+            (err, rows) => {
+                if (err) {
+                    res.status(500).json({
+                        message: 'Error getting machine'
+                    })
+                    console.log(err)
+                } else {
+                    res.json(rows)
+
+                }
+            })
     }
 
     // insert new machine
@@ -48,16 +60,68 @@ class MachineController {
                 )`, (err, rows) => {
             if (err) {
                 console.log(err)
+                res.status(500).json({
+                    message: 'Error inserting machine'
+                })
                 return
             }
             res.json({
-                message: 'Item inserted successfully'
+                message: 'Machine inserted successfully'
             })
         })
     }
 
+    // update a machine by id
+    static updateMachine(req, res) {
+        const id = req.params.id
+        dbConnection.query(`UPDATE machine SET ? WHERE id = ?`, [req.body, id], (err, rows) => {
+            if (err) {
+                console.log(err)
+                res.status(500).json({
+                    message: 'Error updating machine'
+                })
+                return
+            }
+            res.json({
+                message: 'Machine updated successfully',
+                update: req.body
+            })
+        })
+    }
 
+    // delete a machine by id
+    static deleteMachine(req, res) {
+        const id = req.params.id
+        dbConnection.query('DELETE FROM machine WHERE id = ?', id, (err, rows) => {
+            if (err) {
+                console.log(err)
+                res.status(500).json({
+                    message: 'Error deleting machine'
+                })
+                return
+            }
+            res.json({
+                message: 'Machine deleted successfully'
+            })
+        })
+    }
 
+    //search using query
+    static searchMachine(req, res) {
+        const query = req.query.search
+        const value = req.query.value
+        dbConnection.query(`SELECT * FROM machine WHERE ${query} LIKE ${value}`, (err, rows) => {
+            if (err) {
+                console.log(err)
+                res.status(500).json({
+                    message: 'Error searching machine'
+                })
+                return
+            }
+            res.json(rows)
+        })
+    }
 }
+
 
 module.exports = MachineController
