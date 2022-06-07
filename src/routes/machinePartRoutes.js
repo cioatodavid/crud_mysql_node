@@ -3,9 +3,8 @@ const MachinePartController = require('../controllers/machinePartController')
 const router = express.Router();
 
 router
-    //aqui as rotas
-    //ex
-    //.get('/machineparts', MachinePartController.getMachineParts)
+    .get('/machinePart', MachinePartController.getMachinePart)
+    .post('/machinePart', MachinePartController.insertMachinePart)
 
 
 module.exports = router;
