@@ -1,6 +1,19 @@
 const dbConnection = require('../config/dbConnect')
 
+
+/* TODO:
+    - Add a new machine :DONE
+    - Get all machines :DONE
+    - Get a machine by id :NEXT
+    - Update a machine
+    - Delete a machine
+
+
+*/
+
+
 class MachineController {
+    
     // get all itens from machine table
     static getMachines(req, res) {
         dbConnection.query('SELECT * FROM machine', (err, rows) => {
@@ -9,7 +22,18 @@ class MachineController {
             } else {
                 res.json(rows)
             }
+        })
+    }
 
+    // get a machine by id
+    static getMachineById(req, res) {
+        dbConnection.query('SELECT * FROM machine WHERE id = ?', [req.params.id], (err, rows) => {
+            if (err) {
+                console.log(err)
+            } else {
+                res.json(rows)
+                
+            }
         })
     }
 
@@ -30,8 +54,9 @@ class MachineController {
                 message: 'Item inserted successfully'
             })
         })
-
     }
+
+
 
 }
 
