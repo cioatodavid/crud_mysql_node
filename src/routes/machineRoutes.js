@@ -9,6 +9,7 @@ router
     .put('/machine/:id', MachineController.updateMachine)
     .delete('/machine/:id', MachineController.deleteMachine)
     .post('/machine/findby/', MachineController.searchMachine)
+    .get('/machine/page/:page', MachineController.getMachinesByPage)
 
 
 module.exports = router;

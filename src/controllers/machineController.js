@@ -14,9 +14,9 @@ const dbConnection = require('../config/dbConnect')
 */
 
 
+
 class MachineController {
 
-    
 
     // get all itens from machine table
     static getMachines(req, res) {
@@ -28,6 +28,27 @@ class MachineController {
                 console.log(err)
             } else {
                 res.json(rows)
+            }
+        })
+    }
+
+    //get all machines by page
+    static getMachinesByPage(req, res) {
+        const page = req.params.page
+        const limit = 5
+        const offset = (page - 1) * limit
+        dbConnection.query('SELECT * FROM machine LIMIT ? OFFSET ?', [limit, offset], (err, rows) => {
+            if (err) {
+                res.status(500).json({
+                    message: 'Error getting machines'
+                })
+                console.log(err)
+            } else {
+                res.json({
+                    nextPage: (Number(page) + 1),
+                    prevPage: (page - 1) > 0 ? (Number(page) - 1) : 1,
+                    currPage: rows
+                })
             }
         })
     }
@@ -107,6 +128,7 @@ class MachineController {
     }
 
     //search using query
+    //FIXME: need to add .00 to the end of the query number
     static searchMachine(req, res) {
         const query = req.query.search
         const value = req.query.value
