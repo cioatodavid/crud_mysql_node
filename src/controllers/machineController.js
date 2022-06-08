@@ -8,15 +8,11 @@ const dbConnection = require('../config/dbConnect')
     - Update a machine :DONE    
     - Delete a machine :DONE
     - Search using query :DONE
-    - Pagination :NEXT
-
-
+    - Pagination :DONE
 */
 
 
-
 class MachineController {
-
 
     // get all itens from machine table
     static getMachines(req, res) {
@@ -128,8 +124,7 @@ class MachineController {
     }
 
     //search using query
-    //FIXME: need to add .00 to the end of the query number
-    static searchMachine(req, res) {
+    /* static searchMachine(req, res) {
         const query = req.query.search
         const value = req.query.value
         dbConnection.query(`SELECT * FROM machine WHERE ${query} LIKE ${value}`, (err, rows) => {
@@ -142,7 +137,32 @@ class MachineController {
             }
             res.json(rows)
         })
+    } */
+
+    //FIXME: need to add .00 to the end of the query number
+    //search using query with pagination
+    static searchMachineWithPage(req, res) {
+        const query = req.query.search
+        const value = req.query.value
+        const page = Number(req.query.page)
+        const limit = 5
+        const offset = (page - 1) * limit
+        dbConnection.query(`SELECT * FROM machine WHERE ${query} LIKE ${value} LIMIT ? OFFSET ?`, [limit, offset], (err, rows) => {
+            if (err) {
+                console.log(err)
+                res.status(500).json({
+                    message: 'Error searching machines'
+                })
+                return
+            }
+            res.json({
+                nextPage: (Number(page) + 1),
+                prevPage: (page - 1) > 0 ? (Number(page) - 1) : 1,
+                currPage: rows
+            })
+        })
     }
+
 }
 
 

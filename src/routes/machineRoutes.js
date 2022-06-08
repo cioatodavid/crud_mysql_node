@@ -8,8 +8,10 @@ router
     .post('/machine', MachineController.insertMachine)
     .put('/machine/:id', MachineController.updateMachine)
     .delete('/machine/:id', MachineController.deleteMachine)
-    .post('/machine/findby/', MachineController.searchMachine)
+    //.post('/machine/findby/', MachineController.searchMachine) //show all results
+    .post('/machine/findby/page/', MachineController.searchMachineWithPage)
     .get('/machine/page/:page', MachineController.getMachinesByPage)
+    
 
 
 module.exports = router;
