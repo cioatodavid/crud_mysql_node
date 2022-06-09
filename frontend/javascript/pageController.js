@@ -7,7 +7,6 @@ btnPrev.addEventListener('click', function () {
     let urlParams = new URLSearchParams(window.location.search);
     let page = urlParams.get('page');
     if (page > 1) {
-
         window.history.pushState(null, null, `?page=${page - 1}`);
         start(Number(page) - 1);
     } else {

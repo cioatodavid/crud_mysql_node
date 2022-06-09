@@ -1,84 +1,82 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-:root{
-    --backdark: rgb(30, 30, 30);
-    --frontdark: #a989f4;
-    --frontlight: #8a34db;
-    --backlight: #f2f2f2;
+:root {
+	--backdark: rgb(30, 30, 30);
+	--frontdark: #a989f4;
+	--frontlight: #8a34db;
+	--backlight: #f2f2f2;
 }
 
 body {
-    --color: rgb(30, 30, 30);
-    --primary: rgb(138, 52, 219);
-    --border-color: rgba(29, 29, 29, 0.24);
-    --background: #f2f2f2;
-    --shadow-1: rgba(0, 0, 0, 0.364);
-    padding-bottom: 2%;
+	--color: rgb(30, 30, 30);
+	--primary: rgb(138, 52, 219);
+	--border-color: rgba(29, 29, 29, 0.24);
+	--background: #f2f2f2;
+	--shadow-1: rgba(0, 0, 0, 0.364);
+	padding-bottom: 2%;
 }
 
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif
-}
-::selection{
-    background: var(--frontdark);
-}
-::-moz-selection{
-    background: var(--frontdark);
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
 }
 
-
-.container{
-    max-width: 100%;
-    height: 100vh;
-    padding: 5%;
-    
-}
-.container h1{
-    text-align: center;
-    padding-top: 2%;
-    position: relative;
-    margin-bottom: 40px;
-}
-.container h1::before{
-    content: '';
-    position: absolute;
-    width: 120px;
-    height: 3px;
-    bottom: -4px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--frontlight);
-    z-index: -1;
-    
+::selection {
+	background: var(--frontdark);
 }
 
-a{
-    text-decoration: none;
-    
+::-moz-selection {
+	background: var(--frontdark);
 }
 
-.btn{
-    margin-top: 1.5rem;
-    margin-left: 1rem;
-    margin-bottom: 1.5rem;
-    padding: 10px 20px;
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    color: inherit;
-    background: transparent;
-    font-size: 1rem;
-    font-weight: 600;
-    transition: .2s;
-    cursor: pointer;
+.container {
+	max-width: 100%;
+	height: 100vh;
+	padding: 5%;
 }
 
-.btn:hover{
-    background: var(--primary);
-    color: var(--background);
-    border-color: var(--primary);
+.container h1 {
+	text-align: center;
+	padding-top: 2%;
+	position: relative;
+	margin-bottom: 40px;
+}
 
+.container h1::before {
+	content: '';
+	position: absolute;
+	width: 120px;
+	height: 3px;
+	bottom: -4px;
+	left: 50%;
+	transform: translateX(-50%);
+	background: var(--frontlight);
+	z-index: -1;
+}
+
+a {
+	text-decoration: none;
+}
+
+.btn {
+	margin-top: 1.5rem;
+	margin-left: 1rem;
+	margin-bottom: 1.5rem;
+	padding: 10px 20px;
+	border: 1px solid var(--border-color);
+	border-radius: 10px;
+	color: inherit;
+	background: transparent;
+	font-size: 1rem;
+	font-weight: 600;
+	transition: .2s;
+	cursor: pointer;
+}
+
+.btn:hover {
+	background: var(--primary);
+	color: var(--background);
+	border-color: var(--primary);
 }

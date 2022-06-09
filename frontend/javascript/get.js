@@ -23,7 +23,6 @@ function clearRows() {
     if (tbody.length > 1) {
         table.removeChild(tbody[0]);
     }
-
 }
 
 function addRows(data) {
@@ -33,23 +32,27 @@ function addRows(data) {
     for (let i = 0; i < data.length; i++) {
         let tr = document.createElement('tr');
         tbody.appendChild(tr);
-        let machine = new Machine(data[i].ID, data[i].SERIAL_NUMBER, data[i].WIDTH, data[i].HEIGHT, data[i].DEPTH, data[i].WEIGHT);
+        let machine = new Machine(
+            data[i].ID,
+            data[i].SERIAL_NUMBER,
+            data[i].WIDTH,
+            data[i].HEIGHT,
+            data[i].DEPTH,
+            data[i].WEIGHT
+        );
         tr.appendChild(makeTd(machine.ID, 'ID'));
         tr.appendChild(makeTd(machine.SERIAL_NUMBER, 'SERIAL_NUMBER'));
         tr.appendChild(makeTd(machine.WIDTH, 'WIDTH'));
         tr.appendChild(makeTd(machine.HEIGHT, 'HEIGHT'));
         tr.appendChild(makeTd(machine.DEPTH, 'DEPTH'));
         tr.appendChild(makeTd(machine.WEIGHT, 'WEIGHT'));
-
     }
 }
 
 function start(page) {
-
     let data = getJSON(`http://localhost:4000/machine/page/${page}`);
     clearRows();
     addRows(data.currPage);
-
 }
 
 export { start };
