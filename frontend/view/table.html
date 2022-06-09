@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/table.css">
+    <link rel="stylesheet" href="../styles/inputs.css">
+    <title>TABLE</title>
+</head>
+
+<body style="background-color:#f2f2f2">
+
+    <div class="container" onload="">
+        <h1>Response</h1>
+
+        <table id="resTable">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">SERIAL_NUMBER</th>
+                    <th scope="col">WIDTH</th>
+                    <th scope="col">HEIGHT</th>
+                    <th scope="col">DEPTH</th>
+                    <th scope="col">WEIGHT</th>
+                </tr>
+            </thead>
+
+        </table>
+
+        <div class="button">
+            <a href="../view/index.html">
+                <button type="button" class="btn btn-home">
+                    <span>Home</span>
+                </button>
+            </a>
+
+            <button id="btnPrev" type="button" class="btn btn-prev">
+                <span>Previous</span>
+            </button>
+
+            <button id="btnNext" type="button" class="btn btn-next">
+                <span>Next</span>
+            </button>
+
+
+        </div>
+        <script type="module" src="../javascript/Machine.js"></script>
+        <script type="module" src="../javascript/get.js"></script>
+        <script type="module" src="../javascript/pageController.js"></script>
+        <script type="module">
+            import { start } from '../javascript/get.js';
+
+            window.onload = function () {
+                let urlParams = new URLSearchParams(window.location.search);
+                let page = urlParams.get('page');
+                if (page == null || page == undefined || page == "" || page == "0") {
+                    window.history.pushState(null, null, '?page=1');
+                    start(1);
+                } else {
+                    start(page);
+                }
+            }
+
+
+
+
+
+        </script>
+
+</body>
+
+</html>

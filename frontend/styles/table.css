@@ -1,0 +1,102 @@
+table {
+    border: none;
+    outline-style: none;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: auto;
+}
+
+table tr {
+    background-color: #f2f2f2;
+    border: 1px solid rgba(0, 0, 0, 0.199);
+    padding: 0.5rem;
+}
+
+table th {
+    background-color: #8a34db;
+    color: #fff;
+
+}
+
+table th,
+table td {
+    padding: 0.5rem;
+    text-align: center;
+}
+
+table th {
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+
+table th:first-of-type,
+table td:first-of-type {
+    text-align: left;
+    font-weight: 700;
+
+}
+
+@media screen and (max-width: 900px) {
+    table {
+        border: 0;
+    }
+
+
+    table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    table tr {
+        border-bottom: 3px solid #8a34db;
+        display: block;
+        margin-bottom: .625em;
+    }
+
+    table td:last-child {
+        margin-bottom: 0px;
+    }
+
+    table td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: 0.9rem;
+        text-align: right;
+    }
+
+    table td:first-of-type {
+        font-size: 1rem;
+        text-align: right;
+
+    }
+
+    table td::before {
+
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-left: 0px;
+    }
+
+
+    table td:last-child {
+        border-bottom: 0;
+
+    }
+
+    .container h1 {
+        font-size: 1.5rem;
+
+    }
+
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/home.css">
+    <link rel="stylesheet" href="../styles/form.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <title>CRUD</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Node.JS & MySQL</h1>
+        <div class="row">
+
+            <a href="table.html">
+                <div class="function">
+                    <i class="ri-node-tree"></i>
+                    <h2>Get machines</h2>
+                    <p>All machines from database.</p>
+                </div>
+            </a>
+
+            <div class="function">
+                <i class="ri-node-tree"></i>
+                <h2>Get machine by ID</h2>
+                <p>Just the machine with specific ID.</p>
+            </div>
+
+            <div class="function" id="m2-c" onclick="parent.location='#m2-o'">
+                <i class="ri-search-line"></i>
+                <h2>Search by parameters</h2>
+                <p>All machines with specific parameters.</p>
+            </div>
+
+            <div class="function" id="m1-c" onclick="parent.location='#m1-o'">
+                <i class="ri-insert-row-bottom"></i>
+                <h2>Insert a new machine</h2>
+                <p>Add a new machine to the database.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="box">
+        <div class="modal-container" id="m1-o" style="--m-background: rgba(0, 0, 0, 0.4);">
+            <div class="modal">
+                <h1 class="modal_title">Insert a new machine</h1>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label>SERIAL_NUMBER:</label>
+                        <input type="text" value="">
+                    </div>
+                    <div class="form-group">
+                        <label>HEIGHT</label>
+                        <input type="text" value="">
+                    </div>
+                    <div class="form-group">
+                        <label>WIDTH</label>
+                        <input type="text" value="">
+                    </div>
+                </div>
+
+                <button onclick="" class="modal_btn">Submit</button>
+                <a href="#m1-c" class="link-2"></a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
