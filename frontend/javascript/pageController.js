@@ -14,4 +14,4 @@ btnNext.addEventListener('click', function () {
     nextPage();
 });
 
-export { notyf }
+export { notyf };
