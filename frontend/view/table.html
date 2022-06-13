@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/table.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="../styles/inputs.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     <title>TABLE</title>
 </head>
 
@@ -18,55 +20,41 @@
         <table id="resTable">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">SERIAL_NUMBER</th>
-                    <th scope="col">WIDTH</th>
-                    <th scope="col">HEIGHT</th>
-                    <th scope="col">DEPTH</th>
-                    <th scope="col">WEIGHT</th>
+                    <th>ID</th>
+                    <th>SERIAL_NUMBER</th>
+                    <th>WIDTH</th>
+                    <th>HEIGHT</th>
+                    <th>DEPTH</th>
+                    <th>WEIGHT</th>
                 </tr>
             </thead>
 
         </table>
 
-        <div class="button">
+        <div class="buttonC">
             <a href="../view/index.html">
-                <button type="button" class="btn btn-home">
-                    <span>Home</span>
+                <button type="button" class="btn">
+                    <i class="ri-home-line"></i><span>Home</span>
                 </button>
             </a>
 
-            <button id="btnPrev" type="button" class="btn btn-prev">
-                <span>Previous</span>
+            <button id="btnPrev" type="button" class="btn">
+                <i class="ri-arrow-left-s-line"></i><span>Previous</span>
             </button>
 
-            <button id="btnNext" type="button" class="btn btn-next">
-                <span>Next</span>
+            <button id="btnNext" type="button" class="btn">
+                <i class="ri-arrow-right-s-line"></i><span>Next</span>
             </button>
 
 
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
         <script type="module" src="../javascript/Machine.js"></script>
         <script type="module" src="../javascript/get.js"></script>
         <script type="module" src="../javascript/pageController.js"></script>
         <script type="module">
-            import { start } from '../javascript/get.js';
-
-            window.onload = function () {
-                let urlParams = new URLSearchParams(window.location.search);
-                let page = urlParams.get('page');
-                if (page == null || page == undefined || page == "" || page == "0") {
-                    window.history.pushState(null, null, '?page=1');
-                    start(1);
-                } else {
-                    start(page);
-                }
-            }
-
-
-
-
-
+            import { getPage } from '../javascript/get.js';
+            getPage()
         </script>
 
 </body>

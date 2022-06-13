@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../styles/home.css">
     <link rel="stylesheet" href="../styles/form.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     <title>CRUD</title>
 </head>
 
@@ -52,24 +53,38 @@
 
                 <div class="row">
                     <div class="form-group">
-                        <label>SERIAL_NUMBER:</label>
-                        <input type="text" value="">
+                        <label>SERIAL NUMBER:</label>
+                        <input id="SERIAL_TXT" type="text" required>
                     </div>
                     <div class="form-group">
-                        <label>HEIGHT</label>
-                        <input type="text" value="">
+                        <label>WIDTH:</label>
+                        <input id="WIDTH_TXT" type="text" required>
                     </div>
                     <div class="form-group">
-                        <label>WIDTH</label>
-                        <input type="text" value="">
+                        <label>HEIGHT:</label>
+                        <input id="HEIGHT_TXT" type="text" required>
                     </div>
+                    <div class="form-group">
+                        <label>DEPTH:</label>
+                        <input id="DEPTH_TXT" type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label>WEIGHT:</label>
+                        <input id="WEIGHT_TXT" type="text" required>
+                    </div>
+                    <button type="button" id="btnSubmit" class="modal_btn">Submit</button>
                 </div>
 
-                <button onclick="" class="modal_btn">Submit</button>
+
                 <a href="#m1-c" class="link-2"></a>
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script type="module" src="../javascript/insert.js"></script>
+    <script type="module" src="../javascript/indexController.js"></script>
+
 
 </body>
 

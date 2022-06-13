@@ -1,4 +1,5 @@
 import { Machine } from './Machine.js';
+import { notyf } from './pageController.js';
 
 function getJSON(url) {
     let request = new XMLHttpRequest();
@@ -48,11 +49,46 @@ function addRows(data) {
         tr.appendChild(makeTd(machine.WEIGHT, 'WEIGHT'));
     }
 }
-
-function start(page) {
+function verifyData(page) {
     let data = getJSON(`http://localhost:4000/machine/page/${page}`);
-    clearRows();
-    addRows(data.currPage);
+    if (data.message === 'No machines found') {
+        notyf.error('Empty page');
+    } else {
+        window.history.pushState(null, null, `?page=${page}`);
+        clearRows();
+        addRows(data.currPage);
+
+    }
 }
 
-export { start };
+function prevPage() {
+    let urlParams = new URLSearchParams(window.location.search);
+    let page = urlParams.get('page');
+    if (page > 1) {
+        window.history.pushState(null, null, `?page=${page - 1}`);
+        verifyData(Number(page) - 1);
+    } else {
+        notyf.error('You are on the first page');
+    }
+}
+
+function nextPage() {
+    let urlParams = new URLSearchParams(window.location.search);
+    let page = urlParams.get('page');
+    verifyData(Number(page) + 1);
+
+}
+
+function getPage() {
+    let urlParams = new URLSearchParams(window.location.search);
+    let page = urlParams.get('page');
+    if (page == null || page == undefined || page == "" || Number(page) < 1) {
+        window.history.pushState(null, null, '?page=1');
+        verifyData(1);
+    } else {
+        verifyData(page);
+    }
+}
+
+
+export { prevPage, nextPage, getPage };

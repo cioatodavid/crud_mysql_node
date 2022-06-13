@@ -31,7 +31,7 @@ class MachineController {
     //get all machines by page
     static getMachinesByPage(req, res) {
         const page = req.params.page
-        const limit = 5
+        const limit = 10
         const offset = (page - 1) * limit
         dbConnection.query('SELECT * FROM machine LIMIT ? OFFSET ?', [limit, offset], (err, rows) => {
             if (err) {
@@ -40,11 +40,17 @@ class MachineController {
                 })
                 console.log(err)
             } else {
-                res.json({
-                    nextPage: (Number(page) + 1),
-                    prevPage: (page - 1) > 0 ? (Number(page) - 1) : 1,
-                    currPage: rows
-                })
+                if (rows.length === 0) {
+                    res.status(404).json({
+                        message: 'No machines found'
+                    })
+                } else {
+                    res.json({
+                        nextPage: (Number(page) + 1),
+                        prevPage: (page - 1) > 0 ? (Number(page) - 1) : 1,
+                        currPage: rows
+                    })
+                }
             }
         })
     }
@@ -69,7 +75,7 @@ class MachineController {
     // insert new machine
     static insertMachine(req, res) {
         dbConnection.query(`INSERT INTO machine (SERIAL_NUMBER,WIDTH,HEIGHT,DEPTH,WEIGHT) values (
-                ${req.body.SERIAL_NUMBER},
+                "${req.body.SERIAL_NUMBER}",
                 ${req.body.WIDTH},
                 ${req.body.HEIGHT},
                 ${req.body.DEPTH},
@@ -122,22 +128,6 @@ class MachineController {
             })
         })
     }
-
-    //search using query
-    /* static searchMachine(req, res) {
-        const query = req.query.search
-        const value = req.query.value
-        dbConnection.query(`SELECT * FROM machine WHERE ${query} LIKE ${value}`, (err, rows) => {
-            if (err) {
-                console.log(err)
-                res.status(500).json({
-                    message: 'Error searching machine'
-                })
-                return
-            }
-            res.json(rows)
-        })
-    } */
 
     //FIXME: need to add .00 to the end of the query number
     //search using query with pagination
