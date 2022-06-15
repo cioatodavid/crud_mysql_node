@@ -4,6 +4,7 @@ const router = express.Router();
 
 router    
     .post('/replacement', ReplacementPartController.insertReplacementPart)
+    .get('/replacement',ReplacementPartController.searchReplacementPart)
     .delete('/replacement/:macID/:repID', ReplacementPartController.deleteReplacementPart)
 
     
