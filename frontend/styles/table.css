@@ -63,7 +63,7 @@ table tr:last-of-type {
 
 	table th:first-of-type,
 	table td:first-of-type {
-		border: none;
+		border-left: none;
 	}
 
 	table th:last-of-type,
@@ -108,8 +108,13 @@ table tr:last-of-type {
 	table td:first-of-type {
 		font-size: 1rem;
 		text-align: right;
+		
 	}
 
+	table td:first-of-type::before {
+		font-weight: 700;
+		
+	}
 	table td::before {
 		content: attr(data-label);
 		float: left;
@@ -117,6 +122,7 @@ table tr:last-of-type {
 		text-transform: uppercase;
 		margin-left: 0px;
 	}
+	
 
 
 	.container h1 {
