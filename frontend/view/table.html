@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/table.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/inputs.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+    <title>TABLE</title>
+</head>
+
+<body style="background-color:#f2f2f2">
+
+    <div class="container" onload="">
+        <h1>Response</h1>
+
+        <table id="resTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>SERIAL_NUMBER</th>
+                    <th>WIDTH</th>
+                    <th>HEIGHT</th>
+                    <th>DEPTH</th>
+                    <th>WEIGHT</th>
+                </tr>
+            </thead>
+
+        </table>
+
+        <div class="buttonC">
+            <a href="../view/index.html">
+                <button type="button" class="btn noselect">
+                    <i class="ri-home-line"></i><span>Home</span>
+                </button>
+            </a>
+
+            <button id="btnPrev" type="button" class="btn noselect">
+                <i class="ri-arrow-left-s-line"></i><span>Previous</span>
+            </button>
+
+            <button id="btnNext" type="button" class="btn noselect">
+                <i class="ri-arrow-right-s-line"></i><span>Next</span>
+            </button>
+
+
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+        <script type="module" src="../javascript/Machine.js"></script>
+        <script type="module" src="../javascript/get.js"></script>
+        <script type="module" src="../javascript/pageController.js"></script>
+        <script type="module">
+            import { getPage } from '../javascript/get.js';
+            getPage()
+        </script>
+
+</body>
+
+</html>

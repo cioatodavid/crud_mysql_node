@@ -1,0 +1,131 @@
+table {
+	border: none;
+	outline-style: none;
+	border-collapse: collapse;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	table-layout: auto;
+	-webkit-border-radius: 10px 10px 0px 0px;
+	-moz-border-radius: 10px 10px 0px 0px;
+	border-radius: 10px 10px 0px 0px;
+	overflow: hidden;
+}
+
+table tr {
+	background-color: #f2f2f2;
+	border: 1px solid rgba(0, 0, 0, 0.199);
+	-webkit-border-radius: 10px 10px 0px 0px;
+	-moz-border-radius: 10px 10px 0px 0px;
+	border-radius: 10px 10px 0px 0px;
+	padding: 0.5rem;
+}
+
+table th {
+	background-color: #8a34db;
+	color: #fff;
+}
+
+table th,
+table td {
+	padding: 0.5rem;
+	text-align: center;
+}
+
+table th {
+	font-size: 1rem;
+	text-transform: uppercase;
+}
+
+table th:first-of-type,
+table td:first-of-type {
+	text-align: left;
+	font-weight: 700;
+	border-left: #8a34db 1px solid;
+}
+
+table th:last-of-type,
+table td:last-of-type {
+	border-right: #8a34db 1px solid;
+}
+
+table tr:last-of-type {
+	border: #8a34db 1px solid;
+}
+
+@media screen and (max-width: 900px) {
+	table {
+		border: 0;
+	}
+	table tr:last-of-type {
+		border: 1px solid rgba(0, 0, 0, 0.199);
+	}
+
+	table th:first-of-type,
+	table td:first-of-type {
+		border-left: none;
+	}
+
+	table th:last-of-type,
+	table td:last-of-type {
+		border: none;
+	}
+	
+	table thead {
+		border: none;
+		clip: rect(0 0 0 0);
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+		width: 1px;
+	}
+
+	table tr {
+		border-bottom: 4px solid #8a34db;
+		display: block;
+		margin-bottom: .625em;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		border-radius: 10px;
+		padding: 0;
+	}
+	table tr:last-of-type {
+		border-bottom: 4px solid #8a34db;
+	}
+	table td:last-child {
+		margin-bottom: 0px;
+	}
+
+	table td {
+		border-bottom: 1px solid rgba(0, 0, 0, 0.199);
+		display: block;
+		font-size: 0.9rem;
+		text-align: right;
+	}
+
+	table td:first-of-type {
+		font-size: 1rem;
+		text-align: right;
+		
+	}
+
+	table td:first-of-type::before {
+		font-weight: 700;
+		
+	}
+	table td::before {
+		content: attr(data-label);
+		float: left;
+		font-weight: 500;
+		text-transform: uppercase;
+		margin-left: 0px;
+	}
+	
+
+
+	.container h1 {
+		font-size: 1.5rem;
+	}
+}
